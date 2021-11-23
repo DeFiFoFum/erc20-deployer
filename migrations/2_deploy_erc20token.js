@@ -4,5 +4,6 @@ const ERC20Token = artifacts.require("ERC20Token");
 module.exports = async function (deployer) {
   const tokenName = "";
   const tokenSymbol = "";
-  await deployer.deploy(ERC20Token, tokenName, tokenSymbol);
+  const amount = '1000000000000000000'
+  await deployer.deploy(ERC20Token, tokenName, tokenSymbol, amount);
 };
