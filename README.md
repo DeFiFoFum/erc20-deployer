@@ -1,11 +1,5 @@
-# Truffle Typescript Boilerplate
-Build Solidity smart contracts with truffle and typescript support.
-
-## Install 
-Click "Use as Template" to create a repo on GitHub based on this repo. Otherwise:  
-`git clone git@github.com:DeFiFoFum/truffle-typescript-template.git`   
-  
-`yarn install`
+# ERC20 Deployer
+Quickly deploy new ERC20 tokens
 
 ## Setup
 Create a `.env` file based off of `.env.example` to deploy contracts to bsc mainnet/testnet and to verify deployed contracts.  
