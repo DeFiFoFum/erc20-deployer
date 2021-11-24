@@ -10,7 +10,7 @@ contract ERC20MockFactory {
     address[] public tokenAddresses;
 
     function createERC20Mock(string memory name, string memory symbol, uint256 amount) external {
-        address erc20Token = address(new ERC20Mock(name, symbol, amount));
+        address erc20Token = address(new ERC20Mock(name, symbol, amount, msg.sender));
         tokenAddresses.push(erc20Token);
         emit CreateERC20Mock(erc20Token);
     }

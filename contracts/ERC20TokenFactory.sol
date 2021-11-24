@@ -10,7 +10,7 @@ contract ERC20TokenFactory {
     address[] public tokenAddresses;
 
     function createERC20Token(string memory name, string memory symbol, uint256 amount) external {
-        address erc20Token = address(new ERC20Token(name, symbol, amount));
+        address erc20Token = address(new ERC20Token(name, symbol, amount, msg.sender));
         tokenAddresses.push(erc20Token);
         emit CreateERC20Token(erc20Token);
     }
