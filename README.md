@@ -1,6 +1,14 @@
 # ERC20 Deployer
 Quickly deploy new ERC20 tokens
 
+# Contracts
+
+## ERC20Token
+This is a standard ERC20 implementation / Factory configuration.
+
+## ERC20Mock
+This is a standard ERC20 implementation with **public mint capabilities** for testing purposes. Also included is a factory as well.
+
 ## Setup
 Create a `.env` file based off of `.env.example` to deploy contracts to bsc mainnet/testnet and to verify deployed contracts.  
 
