@@ -21,8 +21,26 @@
 const HDWalletProvider = require('truffle-hdwallet-provider');
 require('dotenv').config();
 
+/**`
+* Pass in an array of RPC urls to grab a random one on each run
+* 
+* @param {*} rpcUrlArray 
+* @returns rpcUrl
+*/
+function getRandomRPC(rpcUrlArray) {
+  // Using `| 0` here in place of Math.floor()
+  const rpc = rpcUrlArray[(Math.random() * rpcUrlArray.length) | 0];
+  console.log(`truffle-config::Using rpc ${rpc}`)
+  return rpc
+}
+
 const BSC_DEPLOYER_KEY = process.env.BSC_DEPLOYER_KEY;
 const BSC_TESTNET_DEPLOYER_KEY = process.env.BSC_TESTNET_DEPLOYER_KEY;
+
+const BSC_RPC_URL = getRandomRPC([
+  `https://bsc-dataseed1.binance.org`,
+  `https://speedy-nodes-nyc.moralis.io/6d7bba80ba1df4099b8f83f2/bsc/mainnet`,
+]);
 
 module.exports = {
   networks: {
@@ -39,7 +57,7 @@ module.exports = {
       skipDryRun: true
     },
     bsc: {
-      provider: () => new HDWalletProvider(BSC_DEPLOYER_KEY, `https://bsc-dataseed1.binance.org`),
+      provider: () => new HDWalletProvider(BSC_DEPLOYER_KEY, BSC_RPC_URL),
       network_id: 56,
       confirmations: 10,
       timeoutBlocks: 200,
