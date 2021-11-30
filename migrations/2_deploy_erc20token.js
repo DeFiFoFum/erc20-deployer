@@ -5,5 +5,6 @@ module.exports = async function (deployer) {
   const tokenName = "";
   const tokenSymbol = "";
   const amount = '1000000000000000000'
-  await deployer.deploy(ERC20Token, tokenName, tokenSymbol, amount);
+  const decimals = 18;
+  await deployer.deploy(ERC20Token, tokenName, tokenSymbol, amount, decimals);
 };
