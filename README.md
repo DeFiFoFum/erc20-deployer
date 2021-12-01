@@ -6,6 +6,31 @@ Quickly deploy new ERC20 tokens
 ## ERC20Token
 This is a standard ERC20 implementation / Factory configuration.
 
+```javascript
+ERC20Token erc20Token = new ERC20Token(
+    string memory name, 
+    string memory symbol,
+    uint256 amount,
+    uint8 tokenDecimals,
+    address minter
+);
+```
+
+```javascript
+erc20Factory.createERC20Token(
+    string memory name, 
+    string memory symbol, 
+    uint256 amount
+);
+
+erc20Factory.createERC20TokenWithDecimals(
+    string memory name, 
+    string memory symbol, 
+    uint256 amount,
+    uint8 tokenDecimals
+);
+```
+
 ## ERC20Mock
 This is a standard ERC20 implementation with **public mint capabilities** for testing purposes. Also included is a factory as well.
 
