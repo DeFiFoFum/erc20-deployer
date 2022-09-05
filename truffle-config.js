@@ -63,6 +63,13 @@ module.exports = {
       timeoutBlocks: 200,
       skipDryRun: true
     },
+    polygon: {
+      provider: () => new HDWalletProvider(BSC_DEPLOYER_KEY, 'https://polygon-rpc.com'),
+      network_id: 137,
+      confirmations: 2,
+      timeoutBlocks: 200,
+      skipDryRun: true
+    },
   },
   plugins: [
     'truffle-plugin-verify'
