@@ -34,8 +34,8 @@ function getRandomRPC(rpcUrlArray) {
   return rpc
 }
 
-const BSC_DEPLOYER_KEY = process.env.MAINNET_DEPLOYER_KEY;
-const BSC_TESTNET_DEPLOYER_KEY = process.env.TESTNET_DEPLOYER_KEY;
+const MAINNET_DEPLOYER_KEY = process.env.MAINNET_DEPLOYER_KEY;
+const TESTNET_DEPLOYER_KEY = process.env.TESTNET_DEPLOYER_KEY;
 
 const BSC_RPC_URL = getRandomRPC([
   `https://bsc-dataseed1.binance.org`,
@@ -50,33 +50,36 @@ module.exports = {
       network_id: "*",       // Any network (default: none)
     },
     testnet: {
-      provider: () => new HDWalletProvider(BSC_TESTNET_DEPLOYER_KEY, `https://data-seed-prebsc-2-s1.binance.org:8545/`),
+      provider: () => new HDWalletProvider(TESTNET_DEPLOYER_KEY, `https://data-seed-prebsc-1-s1.binance.org:8545/`),
       network_id: 97,
       confirmations: 2,
       timeoutBlocks: 200,
       skipDryRun: true
     },
     bsc: {
-      provider: () => new HDWalletProvider(BSC_DEPLOYER_KEY, BSC_RPC_URL),
+      provider: () => new HDWalletProvider(MAINNET_DEPLOYER_KEY, BSC_RPC_URL),
       network_id: 56,
       confirmations: 2,
       timeoutBlocks: 200,
       skipDryRun: true
     },
     polygon: {
-      provider: () => new HDWalletProvider(BSC_DEPLOYER_KEY, 'https://polygon-rpc.com'),
+      provider: () => new HDWalletProvider(MAINNET_DEPLOYER_KEY, 'https://polygon-rpc.com'),
       network_id: 137,
       confirmations: 2,
       timeoutBlocks: 200,
+      gas: 6721975,
+      gasPrice: 115 * 1e9,
       skipDryRun: true
     },
   },
   plugins: [
-    'truffle-plugin-verify'
+    'truffle-plugin-verify', // https://www.npmjs.com/package/truffle-plugin-verify
   ],
   api_keys: {
     // Add BSCSCAN_API_KEY in .env file to verify contracts deployed through truffle
-    etherscan: process.env.BSCSCAN_API_KEY
+    etherscan: process.env.BSCSCAN_API_KEY,
+    polygonscan: process.env.POLYGONSCAN_API_KEY
   },
   // Set default mocha options here, use special reporters etc.
   mocha: {

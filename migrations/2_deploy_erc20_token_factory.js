@@ -10,5 +10,6 @@ module.exports = async function (deployer, network, accounts) {
   const decimals = 18;
   // const erc20TokenFactory = await ERC20TokenFactory.at(ERC20TokenFactory.address);
   // await erc20TokenFactory.createERC20Token(tokenName, tokenSymbol, amount);
+  // NOTE: Verify deployments made by the factory
   await deployer.deploy(ERC20Token, tokenName, tokenSymbol, amount, decimals, admin);
 };
